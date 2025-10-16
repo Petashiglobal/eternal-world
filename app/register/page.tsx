@@ -36,7 +36,7 @@ export default function Register() {
             {
               id: authData.user.id,
               email: email,
-              full_name: fullName, // This matches your table column
+              full_name: fullName,
             }
           ])
 
@@ -50,7 +50,7 @@ export default function Register() {
           setFullName('')
         }
       }
-    } catch (error) {
+    } catch {
       setMessage('An unexpected error occurred')
     } finally {
       setLoading(false)

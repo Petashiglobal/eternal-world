@@ -11,10 +11,17 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Check if supabase client is available
+    if (!supabase) {
+      setMessage('Authentication service not available')
+      return
+    }
+    
     setLoading(true)
     
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
@@ -22,10 +29,10 @@ export default function Login() {
       if (error) {
         setMessage(error.message)
       } else {
-         window.location.href = '/dashboard'
-        
+        // Redirect to dashboard on successful login
+        window.location.href = '/dashboard'
       }
-    } catch (error) {
+    } catch {
       setMessage('An error occurred')
     } finally {
       setLoading(false)
