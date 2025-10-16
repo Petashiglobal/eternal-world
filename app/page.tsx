@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -5,10 +7,18 @@ export default function Home() {
       <nav className="flex justify-between items-center p-6 max-w-6xl mx-auto">
         <div className="text-2xl font-bold text-gray-800">EternalVault</div>
         <div className="space-x-4">
-          <button className="text-gray-600 hover:text-gray-900">Login</button>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          <Link 
+            href="/login"
+            className="text-gray-600 hover:text-gray-900"
+          >
+            Login
+          </Link>
+          <Link 
+            href="/register"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
             Get Started
-          </button>
+          </Link>
         </div>
       </nav>
 
@@ -23,12 +33,18 @@ export default function Home() {
           Share your authentic self with future generations, only when the time is right.
         </p>
         <div className="space-x-4">
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
+          <Link 
+            href="/register"
+            className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
             Create Your Legacy
-          </button>
-          <button className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors">
+          </Link>
+          <Link 
+            href="/login"
+            className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors"
+          >
             Learn More
-          </button>
+          </Link>
         </div>
       </section>
 
