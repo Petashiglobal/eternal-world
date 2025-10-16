@@ -22,8 +22,8 @@ export default function Login() {
       if (error) {
         setMessage(error.message)
       } else {
-        setMessage('Login successful!')
-        // Will redirect to dashboard later
+         window.location.href = '/dashboard'
+        
       }
     } catch (error) {
       setMessage('An error occurred')
