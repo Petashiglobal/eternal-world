@@ -113,16 +113,25 @@ export default function Dashboard() {
         <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
           EternalVault
         </div>
-        <div className="flex items-center space-x-4">
-          <span className="text-gray-300">Welcome, {profile?.full_name || user?.email}</span>
-          <div className="text-xs text-cyan-400">DID: {userDID.slice(0, 20)}...</div>
-          <button
-            onClick={handleLogout}
-            className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
-          >
-            Logout
-          </button>
-        </div>
+       <div className="flex items-center space-x-4">
+  <div className="flex items-center space-x-3">
+    <img 
+      src={`https://www.gravatar.com/avatar/${user?.id}?s=40&d=identicon&r=pg`}
+      alt="Profile"
+      className="w-8 h-8 rounded-full"
+    />
+    <div>
+      <div className="text-gray-300">Welcome, {profile?.full_name || user?.email}</div>
+      <div className="text-xs text-cyan-400">DID: {userDID.slice(0, 20)}...</div>
+    </div>
+  </div>
+  <button
+    onClick={handleLogout}
+    className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+  >
+    Logout
+  </button>
+</div>
       </nav>
 
       {/* Dashboard Content */}
