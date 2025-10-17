@@ -1,8 +1,10 @@
 'use client'
+import { userDID } from '../../src/lib/didUtils'
 import { useEffect, useState, useCallback } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
 import { User } from '@supabase/supabase-js'
+
 
 interface UserProfile {
   id: string
@@ -113,6 +115,7 @@ export default function Dashboard() {
         </div>
         <div className="flex items-center space-x-4">
           <span className="text-gray-300">Welcome, {profile?.full_name || user?.email}</span>
+          <div className="text-xs text-cyan-400">DID: {userDID.slice(0, 20)}...</div>
           <button
             onClick={handleLogout}
             className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"

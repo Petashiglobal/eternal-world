@@ -1,0 +1,1 @@
+export const userDID = 'did:key:z6MkvqDhxKVsoJSpvx9v8tvhbMgqdA4ZRer3M6yJaCWftdQX'

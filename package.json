@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.75.0",
+    "did-jwt": "^8.0.18",
     "next": "15.5.5",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "web3.storage": "^4.5.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
