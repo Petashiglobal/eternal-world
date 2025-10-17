@@ -383,103 +383,51 @@ export default function CreateVault() {
           )}
 
           {/* Step 5: Add Memories */}
-          {currentStep === 5 && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white">Add Memories</h2>
-              <p className="text-gray-400">Upload photos, videos, or record new memories for your legacy.</p>
-              
-              {/* File Upload */}
-              <div className="space-y-4">
-                <div className="flex space-x-4">
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleFileSelect}
-                    multiple
-                    accept="image/*,video/*,audio/*"
-                    className="hidden"
-                  />
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    className="flex-1 bg-gray-700 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-all"
-                  >
-                    📁 Upload Files
-                  </button>
-                  <button
-                    onClick={cameraActive ? stopCamera : startCamera}
-                    className="flex-1 bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all"
-                  >
-                    {cameraActive ? '📷 Stop Camera' : '📷 Take Photo'}
-                  </button>
-                  <button
-                    onClick={startRecording}
-                    className="flex-1 bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-all"
-                  >
-                    🎥 Record Video
-                  </button>
-                </div>
-
-                {/* Camera Preview */}
-                {cameraActive && (
-                  <div className="space-y-4">
-                    <video 
-                      ref={videoRef} 
-                      autoPlay 
-                      playsInline
-                      className="w-full h-64 bg-black rounded-lg"
-                    />
-                    <canvas ref={canvasRef} className="hidden" />
-                    <button
-                      onClick={takePicture}
-                      className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-all"
-                    >
-                      📸 Capture Photo
-                    </button>
-                  </div>
-                )}
-
-                {/* File List */}
-                {vaultData.files.length > 0 && (
-                  <div className="space-y-2">
-                    <h3 className="text-white font-semibold">Selected Files:</h3>
-                    {vaultData.files.map((file, index) => (
-                      <div key={index} className="flex justify-between items-center bg-gray-700/50 rounded-lg px-4 py-2">
-                        <div className="flex items-center space-x-3">
-                          {file.type.startsWith('image/') && <span>🖼️</span>}
-                          {file.type.startsWith('video/') && <span>🎥</span>}
-                          {file.type.startsWith('audio/') && <span>🎵</span>}
-                          <span className="text-gray-300 text-sm">
-                            {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
-                          </span>
-                        </div>
-                        <button
-                          onClick={() => handleFileRemove(index)}
-                          className="text-red-400 hover:text-red-300 text-sm"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              
-              <div className="flex space-x-4">
-                <button
-                  onClick={handleBack}
-                  className="flex-1 bg-gray-700 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-all"
-                >
-                  Back
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-cyan-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-cyan-700 transition-all"
-                >
-                  Continue
-                </button>
-              </div>
-            </div>
-          )}
+{currentStep === 5 && (
+  <div className="space-y-6">
+    <h2 className="text-2xl font-bold text-white">Add Memories</h2>
+    <p className="text-gray-400">Upload photos or videos for your legacy vault.</p>
+    
+    <div className="space-y-4">
+      <button 
+        onClick={() => document.getElementById('fileInput')?.click()}
+        className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 text-white py-4 rounded-xl font-semibold hover:from-purple-700 hover:to-cyan-700 transition-all"
+      >
+        📁 Upload Files
+      </button>
+      
+      <input
+        id="fileInput"
+        type="file"
+        multiple
+        accept="image/*,video/*"
+        className="hidden"
+        onChange={(e) => {
+          if (e.target.files) {
+            const files = Array.from(e.target.files)
+            // We'll handle the files in the next step
+            console.log('Files selected:', files)
+          }
+        }}
+      />
+    </div>
+    
+    <div className="flex space-x-4">
+      <button
+        onClick={handleBack}
+        className="flex-1 bg-gray-700 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-all"
+      >
+        Back
+      </button>
+      <button
+        onClick={handleNext}
+        className="flex-1 bg-gradient-to-r from-purple-600 to-cyan-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-cyan-700 transition-all"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+)}
 
           {/* Step 6: Final Message */}
           {currentStep === 6 && (
